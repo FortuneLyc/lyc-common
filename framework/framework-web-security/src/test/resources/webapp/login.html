@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <title>欢迎使用，请登录</title>
+  <script src="md5.min.js"></script>
+</head>
+
+<body>
+  <div class="container demo-1">
+    <div class="content">
+      <div id="large-header" class="large-header">
+        <div class="logo_top">域名服务信息安全管理系统</div>
+        <canvas id="demo-canvas"></canvas>
+        <form id="formId" action="/auth" method="post" class="login_bg">
+          <input id="pwMD5" hidden="true" name="pw" />
+          <input id="_csrf" hidden="true" name="_csrf" />
+          <div id="incorrectShow" style="display:none;width:220px">用户名、密码或验证码错误!</div>
+          <div id="logoutShow" style="display:none">您已成功退出系统!</div>
+          <div id="isNullShow" style="display:none"></div>
+          <ul class="login_box border">
+            <i class="ico ico1"></i>
+            <i class="ico ico2"></i>
+            <i class="ico ico3"></i>
+            <i class="ico ico4"></i>
+            <h2 class="itemHeader">用户登录</h2>
+            <li class="login_user"><input id="un" type="text" placeholder="用户名" name="un" /></li>
+            <li><input id="pw" type="password" placeholder="密码" autocomplete="off" /></li>
+            <li class="login-yzm"><input class="yz_input" name="captcha" type="text" placeholder="验证码" autocomplete="off" />
+              <img alt="显示验证码" src="" onclick="javascript:this.src='/captcha?'+Math.random()" style="color:#fff; cursor:pointer">
+            </li>
+            <li class="login_btn"><input type="submit" id="submitBtn" value="登 录"  style="padding-left: 0;"/></li>
+          </ul>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="TweenLite.min.js"></script>
+  <script src="EasePack.min.js"></script>
+  <script src="login.js"></script>
+  <script type="text/javascript">
+    var queryTag = window.location.search.substr(1)
+    if (queryTag === 'failure') {
+      document.getElementById('incorrectShow').style.display = ''
+      document.getElementById('logoutShow').style.display = 'none'
+      setTimeout(function () {
+        document.getElementById('incorrectShow').style.display = 'none'
+      }, 2000)
+    } else if (queryTag === 'logout') {
+      document.getElementById('incorrectShow').style.display = 'none'
+      document.getElementById('logoutShow').style.display = ''
+      setTimeout(function () {
+        document.getElementById('logoutShow').style.display = 'none'
+      }, 2000)
+    } else {
+      document.getElementById('incorrectShow').style.display = 'none'
+      document.getElementById('logoutShow').style.display = 'none'
+    }
+
+    function submitForm () {
+      var pw = document.getElementById('pw').value
+      var passMd5 = md5(pw) // eslint-disable-line
+      document.getElementById('pwMD5').value = passMd5
+      document.getElementById('_csrf').value = md5(Date.now()) // eslint-disable-line
+      document.getElementById('formId').submit()
+    }
+    function stopDefault (e) {
+      if (e && e.preventDefault) {
+        e.preventDefault()
+      } else {
+        window.event.returnValue = false
+      }
+      return false
+    }
+    var s = document.getElementById('submitBtn')
+    s.onclick = function (e) {
+      var un = document.getElementById('un').value
+      var pwd = document.getElementById('pw').value
+      if (un.trim() === '') {
+        document.getElementById('isNullShow').innerText = '请输入用户名'
+        document.getElementById('isNullShow').style.display = ''
+        setTimeout(function () {
+          document.getElementById('isNullShow').style.display = 'none'
+        }, 2000)
+        return false
+      }
+      if (pwd.trim() === '') {
+        document.getElementById('isNullShow').innerText = '请输入密码'
+        document.getElementById('isNullShow').style.display = ''
+        setTimeout(function () {
+          document.getElementById('isNullShow').style.display = 'none'
+        }, 2000)
+        return false
+      }
+      submitForm()
+      stopDefault(e)
+    }
+  </script>
+</body>
+<script src="lib.js"></script>
+</html>
+<style>
+  body {
+    background: #4d5e70;
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+  }
+
+  .logo_top {
+    font-size: 35px;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .border {
+    border: 1px solid #1085b8;
+    position: relative;
+    -webkit-box-shadow: 2px 5px 5px #06d6e0 inset;
+    box-shadow: 2px 2px 25px rgba(6, 214, 224, 0.3) inset;
+  }
+
+  .itemHeader {
+    background: url("assets/headerBg.png") no-repeat;
+    width: 219px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0px auto 24px auto;
+    font-size: 18px;
+    color: #06d6e0;
+    text-align: center;
+  }
+
+  .large-header {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+  }
+
+  .demo-1 .large-header {
+    background-image: url('assets/bg2.jpg');
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #f0f0f0 inset;
+  }
+
+  .login_bg {
+    position: absolute;
+    height: 346px;
+    width: 100%;
+    background: url("assets/formbg.png") repeat-x;
+    top: 180px;
+  }
+
+  .login_bg>div {
+    height: 60px;
+    line-height: 60px;
+    width: 220px;
+    text-align: center;
+    position: absolute;
+    background: #000;
+    opacity: 0.7;
+    color: #fff;
+    border-radius: 5px;
+    top: 20%;
+    margin-top: -30px;
+    left: 50%;
+    margin-left: -90px;
+    z-index: 9999;
+  }
+
+  .login_box {
+    width: 430px;
+    margin: 30px auto 0 auto;
+    padding: 5px 20px 5px;
+  }
+
+  .ico {
+    background: url("assets/borderBg.png") no-repeat;
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+  }
+
+  .ico1 {
+    background-position: 0 0;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+
+  .ico2 {
+    background-position: -13px 0;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .ico3 {
+    background-position: -28px 0;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .ico4 {
+    background-position: -42px 0;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .login_box li {
+    height: 38px;
+    line-height: 38px;
+    width: 330px;
+    margin: 10px auto 0 auto;
+  }
+
+  .login_box li input {
+    font-size: 16px;
+    padding-left: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .login_box li input {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #fff;
+  /*   border-left: 4px solid #06ca90; */
+  }
+
+  .login_box li.login_btn {
+    height: 72px;
+    width: 400px;
+    background: url(assets/login_btn.png) no-repeat;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
+  .login_box li.login_btn input {
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    height: 44px;
+    line-height: 44px;
+    margin-top: 11px;
+    background: transparent;
+  }
+
+  .login_box li.login_btn:hover {
+    opacity: 0.9;
+  }
+
+  .login-yzm .yz_input {
+    width: 210px;
+    margin-right: 6px;
+  }
+
+  .login-yzm img {
+    height: 38px;
+    vertical-align: middle;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+
+  }
+</style>

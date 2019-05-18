@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.act.framework.web.dao.SystemMenuMapper">
+	<select id="selectByUserId" resultType="com.act.framework.web.model.SystemMenu" >
+		SELECT
+			m.id AS id,
+			m.father_id AS fatherId,
+			m.tree_node_type AS treeNodeType,
+			m.order_num AS orderNum,
+			m.menu_path AS menuPath,
+			m.menu_name AS menuName,
+			m.menu_code AS menuCode,
+			m.menu_icon AS menuIcon,
+			m.is_visible AS isVisible,
+			m.is_new_window AS isNewWindow,
+			m.remark AS remark
+		FROM
+			system_menu m
+		LEFT JOIN role_menu rm ON rm.menu_id = m.id
+		LEFT JOIN user_role_relation ur ON ur.role_id = rm.role_id
+		LEFT JOIN system_user u ON u.id = ur.user_id
+		WHERE
+			u.id = #{userId}
+		ORDER BY
+			m.order_num ASC
+	</select>
+
+	<select id="getTopUseMenu" resultType="com.act.framework.web.vo.FavoriteMenuVo">
+		SELECT
+			m.id AS id,
+			m.father_id AS fatherId,
+			m.tree_node_type AS treeNodeType,
+			m.order_num AS orderNum,
+			m.menu_path AS menuPath,
+			m.menu_name AS menuName,
+			m.menu_code AS menuCode,
+			m.menu_icon AS menuIcon,
+			m.is_visible AS isVisible,
+			m.is_new_window AS isNewWindow,
+			m.remark AS remark,
+			f.id AS favoriteId
+		FROM
+			tb_my_favorites f
+		LEFT JOIN system_menu m on f.menu_id = m.id
+		WHERE
+			user_id = #{userId}
+		ORDER BY
+			f.click_count DESC
+	</select>
+
+	<select id="selectFavorite" resultType="com.act.framework.web.vo.FavoriteMenuVo">
+		SELECT
+			m.id AS id,
+			m.father_id AS fatherId,
+			m.tree_node_type AS treeNodeType,
+			m.order_num AS orderNum,
+			m.menu_path AS menuPath,
+			m.menu_name AS menuName,
+			m.menu_code AS menuCode,
+			m.menu_icon AS menuIcon,
+			m.is_visible AS isVisible,
+			m.is_new_window AS isNewWindow,
+			m.remark AS remark,
+			f.id AS favoriteId
+		FROM
+			tb_my_favorites f
+		LEFT JOIN system_menu m on f.menu_id = m.id
+		WHERE
+			user_id = #{userId} and f.is_favorite = TRUE
+		ORDER BY
+			f.click_count DESC
+	</select>
+</mapper>

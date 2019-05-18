@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.act.framework.web.dao.VersionInfoMapper">
+
+	<select id="getVersionInfo" resultType="com.act.framework.web.model.VersionInfo">
+		select
+		   v.id as id,
+		   v.version_no as versionNo,
+		   v.version_content as versionContent,
+		   v.name as name,
+		   v.report_date as reportDate,
+		   v.general_no as generalNo,
+		   v.display_label as displayLabel,
+		   v.first_report_date as firstReportDate,
+		   v.is_visible as isVisible,
+		   v.publish_date as publishDate,
+		   v.system_name       as systemName
+	  	from 
+	   	   version_Info v
+	  	where
+	   	   v.id in (select max(v1.id) from version_Info v1 group by v1.name)
+	   	order by v.system_name
+	</select>
+
+</mapper>

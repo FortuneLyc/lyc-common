@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.lyc:lyc-commons-orm:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lyc/lyc-commons-orm/unknown/lyc-commons-orm-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lyc/lyc-commons-orm/unknown/lyc-commons-orm-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lyc/lyc-commons-orm/unknown/lyc-commons-orm-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

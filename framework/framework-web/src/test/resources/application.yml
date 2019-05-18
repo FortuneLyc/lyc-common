@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: base
+  mvc:
+    throwExceptionIfNoHandlerFound: true
+    favicon:
+      enabled: false
+  resources:
+    staticLocations: classpath:/webapp/
+  task:
+    taskSchedulerPoolSize: 8
+  datasource:
+    # 使用ORACLE的配置
+    # name: ORACLE
+    # identity: ORACLE
+    # driverClassName: oracle.jdbc.driver.OracleDriver
+    # url: jdbc:oracle:thin:@172.31.25.207:1521:orcl
+    # username: smcs_prdt
+    # password: smcs
+    # validationQuery: select 1 from DUAL
+
+    # 使用MYSQL的配置
+    name: MYSQL
+    identity: MYSQL
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.31.25.136:3306/framework_base?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: smcs
+    password: smcs
+    validationQuery: select 1 from DUAL
+
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    needSql: true
+    removeAbandoned: false
+    needWeb: false
+
+
+server:
+  port: 8080
+  context-path: /
+  session-timeout: 5000
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript
+  error:
+    whitelabel:
+      enabled: false
+  tomcat:
+    uri-encoding: UTF-8
+    
+act:
+  isCors: true

@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>lyc-framework-web-security</artifactId>
+  <name>web安全框架</name>
+  <description>web安全框架</description>
+
+  	<properties>
+		<!--versions -->
+		<!--plguin-setting -->
+
+	</properties>
+
+	<parent>
+		<groupId>com.lyc</groupId>
+		<artifactId>lyc-pom</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+		<relativePath>../../dependencies/pom-dependencies</relativePath>
+	</parent>
+
+	<dependencies>
+		<!-- act -->
+		<!-- commons -->
+	 	<dependency>
+			<groupId>com.lyc</groupId>
+			<artifactId>lyc-framework-web</artifactId>
+		</dependency>
+	 	<dependency>
+			<groupId>com.lyc</groupId>
+			<artifactId>lyc-framework-workflow</artifactId>
+		</dependency>
+
+		<dependency>
+		    <groupId>net.sf.ehcache</groupId>
+		    <artifactId>ehcache</artifactId>
+		</dependency>
+
+		<!-- spring-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.pusuo</groupId>
+			<artifactId>patchca</artifactId>
+			<version>0.5.0</version>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<attach>true</attach>
+					<includePom>true</includePom>
+					<excludeResources>true</excludeResources>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

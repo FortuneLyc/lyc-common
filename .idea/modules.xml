@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/common.iml" filepath="$PROJECT_DIR$/.idea/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons-constant/lyc-commons-constant.iml" filepath="$PROJECT_DIR$/commons/commons-constant/lyc-commons-constant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons-net/lyc-commons-net.iml" filepath="$PROJECT_DIR$/commons/commons-net/lyc-commons-net.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons-orm/lyc-commons-orm.iml" filepath="$PROJECT_DIR$/commons/commons-orm/lyc-commons-orm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons-other/lyc-commons-other.iml" filepath="$PROJECT_DIR$/commons/commons-other/lyc-commons-other.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons-spring/lyc-commons-spring.iml" filepath="$PROJECT_DIR$/commons/commons-spring/lyc-commons-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/framework-basic/lyc-framework-basic.iml" filepath="$PROJECT_DIR$/framework/framework-basic/lyc-framework-basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/framework-web/lyc-framework-web.iml" filepath="$PROJECT_DIR$/framework/framework-web/lyc-framework-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/framework-web-security/lyc-framework-web-security.iml" filepath="$PROJECT_DIR$/framework/framework-web-security/lyc-framework-web-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/framework-workflow/lyc-framework-workflow.iml" filepath="$PROJECT_DIR$/framework/framework-workflow/lyc-framework-workflow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dependencies/pom-dependencies/lyc-pom.iml" filepath="$PROJECT_DIR$/dependencies/pom-dependencies/lyc-pom.iml" />
+    </modules>
+  </component>
+</project>

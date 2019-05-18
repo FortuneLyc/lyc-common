@@ -1,0 +1,108 @@
+spring:
+  application:
+    name: base
+  mvc:
+    throwExceptionIfNoHandlerFound: true
+  resources:
+    staticLocations: classpath:/webapp/
+  task:
+    taskSchedulerPoolSize: 8
+  operationLog:
+    # 操作日志 可配置项: Select,Insert,Delete,Update,Loggin,Logout,Other 使用逗号分隔
+    # logTypes: Insert,Delete,Update,Loggin,Logout,Other,Select
+    # 日志存留时间 默认30天
+    logRemainDay: 30
+  datasource:
+    # 使用ORACLE的配置
+#    name: ORACLE
+#    identity: ORACLE
+#    driverClassName: oracle.jdbc.driver.OracleDriver
+#    url: jdbc:oracle:thin:@172.31.134.222:1521:orcl
+#    username: dns_gj
+#    password: dns_gj
+#    validationQuery: select 1 from DUAL
+
+    # 使用MYSQL的配置
+    # name: MYSQL
+    # identity: MYSQL
+    # driverClassName: com.mysql.jdbc.Driver
+    # url: jdbc:mysql://172.31.25.136:3306/framework_base?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    # username: smcs
+    # password: smcs
+    # validationQuery: select 1 from DUAL
+
+    name: POSTGRE
+    identity: POSTGRE
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://172.31.134.230:5432/ads
+    username: ads
+    password: adspassword
+    validationQuery: select 1
+
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    needSql: true
+    removeAbandoned: false
+    needWeb: false
+
+#act:
+#  index: login.html
+#  captcha:
+#    require: true
+#    passString: yhsj66666
+#  security:
+#    alwaysUseDefaultTargetUrl: false
+#    targetUrlMap:
+#      admin: /index.html
+#      user: /home.htm
+act:
+  login: login/login.html
+  captcha:
+    require: false
+    passString: yhsj66666
+  security:
+    alwaysUseDefaultTargetUrl: false
+    targetUrlMap:
+      普通用户角色: /static/daping/ads/工业互联网资源概况cisms.html
+      管理员角色: /login/nav.html
+      default-target: /index.html
+
+server:
+  port: 8080
+  # port: 8443
+  # ssl:
+  #   reDirectFromPort: 8080
+  #   key-store: classpath:keystore.p12
+  #   key-store-password: 123456
+  #   keyStoreType: PKCS12
+  #   keyAlias: springboot
+  context-path: /
+  session-timeout: 1
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript
+  error:
+    whitelabel:
+      enabled: false
+  tomcat:
+    uri-encoding: UTF-8
+    accesslog:
+      enabled: true
+      buffered: true
+      rotate: true
+      directory: accesslogs
+      file-date-format: .yyyy-MM-dd
+      pattern: combined
+      prefix: access_log

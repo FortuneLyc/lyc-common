@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.act.framework.web.dao.MenuElementMapper">
+	<select id="getMenuElementByUser" resultType="com.act.framework.web.model.MenuElement" >
+		SELECT
+			m.id AS id,
+			m.menu_Id AS menuId,
+			m.element_name AS elementName
+		FROM
+			menu_element m
+		LEFT JOIN role_Menu_element_relatioin r ON r.element_id = m.id
+		LEFT JOIN user_role_relation ur ON ur.role_id = r.role_id
+		LEFT JOIN system_user u ON u.id = ur.user_id
+		WHERE
+			u.id = #{id}
+	</select>
+	
+	<select id="getCheckedMenuIds" resultType="java.lang.Long" >
+		select 
+			m.id as id
+		 from 
+		 	menu_element m, role_menu_element_relatioin r
+		 where 
+		 	m.id = r.element_id
+		 	and r.role_id = #{roleId}
+		 	and r.menu_id = #{menuId}
+	</select>
+	
+</mapper>

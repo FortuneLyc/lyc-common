@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="act-framework-web" />
+        <module name="lyc-commons-constant" />
+        <module name="lyc-commons-net" />
+        <module name="lyc-commons-orm" />
+        <module name="lyc-commons-other" />
+        <module name="lyc-commons-spring" />
+        <module name="lyc-framework-basic" />
+        <module name="lyc-framework-web" />
+        <module name="lyc-framework-web-security" />
+        <module name="lyc-framework-workflow" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="act-framework-web" target="1.8" />
+      <module name="lyc-commons-constant" target="1.8" />
+      <module name="lyc-commons-net" target="1.8" />
+      <module name="lyc-commons-orm" target="1.8" />
+      <module name="lyc-commons-other" target="1.8" />
+      <module name="lyc-commons-spring" target="1.8" />
+      <module name="lyc-framework-basic" target="1.8" />
+      <module name="lyc-framework-web" target="1.8" />
+      <module name="lyc-framework-web-security" target="1.8" />
+      <module name="lyc-framework-workflow" target="1.8" />
+      <module name="lyc-pom" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
