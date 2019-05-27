@@ -127,11 +127,17 @@
 			    <artifactId>mapper</artifactId>
 			    <version>${tk.mybatis.mapper.version}</version>
 			</dependency>
-				<dependency>
+			<dependency>
 			    <groupId>com.github.pagehelper</groupId>
 			    <artifactId>pagehelper</artifactId>
 			    <version>${pagehelper.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+
 
 			<dependency>
 				<groupId>com.oracle</groupId>
@@ -139,9 +145,9 @@
 				<version>11.2.0.3</version>
 			</dependency>
 			<dependency>
-			    <groupId>mysql</groupId>
-			    <artifactId>mysql-connector-java</artifactId>
-			    <version>5.1.14</version>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.13</version>
 			</dependency>
 			<dependency>
 				<groupId>org.postgresql</groupId>

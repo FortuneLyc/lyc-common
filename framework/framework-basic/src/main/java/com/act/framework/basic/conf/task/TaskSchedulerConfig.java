@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
@@ -46,6 +47,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 @ComponentScan("com.act")
 @EnableScheduling
 @ConfigurationProperties(prefix="task")
+@ConditionalOnProperty(prefix="task",name = "isOpen", havingValue = "true")
 public class TaskSchedulerConfig implements SchedulingConfigurer {
 	private static Logger logger = LoggerFactory.getLogger(TaskSchedulerConfig.class);
 
